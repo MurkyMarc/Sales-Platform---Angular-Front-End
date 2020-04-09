@@ -1,0 +1,13 @@
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <a [routerLink]="['/multi-car']">All Cars</a>
+  <a *ngIf="!userLoginService.currUser.loggedIn" [routerLink]="['/login']">Login</a>
+  <a *ngIf="userLoginService.currUser.loggedIn" [routerLink]="['/sell']">Sell a car</a>
+  <a *ngIf="userLoginService.currUser.loggedIn" routerLink="/multi-car/{{userLoginService.currUser.userId}}">My Cars</a>
+  <a *ngIf="userLoginService.currUser.loggedIn" [routerLink]="['/transaction-history']">Transaction History</a>
+</div>
+
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
+  <span *ngIf="userLoginService.currUser.loggedIn" class="float-right greeting">Hello, {{userLoginService.currUser.name}}. <br> Your Balance: ${{ userLoginService.currUser.balance }}</span>
+</div>
